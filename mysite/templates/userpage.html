@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+<h1>Newsfeed</h1>
+<form action="/userpage/" method="post">
+  {% csrf_token %}
+  <div class="form-group">
+      <!-- form.user, form is from the views.py's createPost form-->
+      {{ form.user }}
+  </div>
+  <div class="form-group">
+      {{ form.title }}
+  </div>
+  <div class="form-group">
+      {{ form.details }}
+</div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<!-- newpost is from the views's file -->
+{% for post in newposts %}
+<div class="userpost">
+  <div class="body" style="border-style: double; margin-bottom: 10px;">
+    <h4 class="username">{{post.user}}</h4>
+    <h3 class="title">{{post.title}}</h3>
+    <p class="detail">{{post.details}}</p>
+    </div>
+  {% endfor %}
+</div>
+<!-- oldpost is from the views's file -->
+{% for post in oldposts %}
+<div class="userpost">
+  <div class="body" style="border-style: double; margin-bottom: 10px;">
+    <h4 class="username">{{post.user}}</h4>
+    <h3 class="title">{{post.title}}</h3>
+    <h4 class="detail">{{post.details}}</h5>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

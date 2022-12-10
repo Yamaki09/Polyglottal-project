@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% load static %} {% block page_content %}
+
+<h1>Newsfeed</h1>
+<!-- post is from the views's file -->
+{% for post in posts %}
+<div class="userpost">
+	<div class="body" style="border-style: double; margin-bottom: 10px">
+		<h4 class="username" style="background-color: #091679; color: white">
+			{{post.user}}
+		</h4>
+		<h3 class="title">{{post.title}}</h3>
+		<p class="detail">{{post.details}}</p>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
